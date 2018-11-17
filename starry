@@ -29,7 +29,7 @@ void setup() {
   size(1280, 1014);
   starrynight = loadImage("starry night.jpg");
   minim = new Minim(this);
- player = minim.loadFile("lianna la havas.mp4");
+ player = minim.loadFile("lianna la havas.mp3");
  out = minim.getLineOut();
   background(0);
   noStroke();
