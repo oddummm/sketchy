@@ -1,0 +1,54 @@
+// starry night x autumn hyatt
+
+//visualization of vincent van gogh's "starry night"
+// "starry, starry night" by lianne la havas (originally by don mclean)
+// as picture becomes clearer, soundtrack comes together using granular synthesis
+// left clicking the picture makes it shimmer as a function of perlin noise
+// right clicking the image makes it erase 
+// as image erases, soundtrack deconstructs 
+// PERHAPS pressing the "i" key inverts the colors, and lowers the pitch of the music 
+
+Brushstroke[] brushstrokes = new Brushstroke[20000];
+
+import ddf.minim.*;
+import ddf.minim.ugens.*;
+import ddf.minim.spi.*;
+
+Minim minim; 
+AudioPlayer player;
+AudioOutput out;
+
+PImage starrynight;
+float time = 0.0;
+float change = .2;
+
+
+
+
+void setup() {
+  size(1280, 1014);
+  starrynight = loadImage("starry night.jpg");
+  minim = new Minim(this);
+ player = minim.loadFile("lianna la havas.mp4");
+ out = minim.getLineOut();
+  background(0);
+  noStroke();
+  
+GranulateSteady grain = new GranulateSteady(); 
+
+player.patch(grain).patch(out);
+}
+
+void draw() {
+  in.play();
+  //vi += 0.1;
+  //lahavas.amp(0.5*vi);
+ 
+  for (int i = 0; i<brushstrokes.length; i++) brushstrokes[i].update();
+}
+
+void mousePressed() {
+  if (mouseButton == RIGHT) {
+    //for( i = brushstrokes.length -1; i> 0; i--);
+  }
+}
